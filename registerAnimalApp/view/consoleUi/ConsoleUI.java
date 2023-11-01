@@ -7,6 +7,7 @@ import view.consoleUi.menu.typesMenu.AnimalMenu;
 import view.consoleUi.menu.typesMenu.MainMenu;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * ConsoleUI представляет консольный пользовательский интерфейс для приложения игрушечного магазина.
@@ -39,6 +40,7 @@ public class ConsoleUI implements View {
 
     private void runMainMenu() {
         while (mainMenu.isRunning()) {
+            showCountAnimals();
             consoleReader.println(mainMenu.printMenu());
             String choice = consoleReader.input("Выберите пункт меню: ");
             if (mainMenu.checkInputLineMenu(choice) == -1) {
@@ -59,11 +61,12 @@ public class ConsoleUI implements View {
                     animalTypes + "\n Введите нужный вид -> ");
             if (checkTypeAnimal(animalTypes, animalType)) {
                 List<String> animalsNames = getNamesAnimalsByType(animalType);
-                consoleReader.printList(animalsNames);
+                consoleReader.print(animalsNames);
                 String animalName = consoleReader.input("\nВведите имя животного -> ");
                 if (checkNameAnimal(animalsNames, animalName)) {
                     this.animalMenu = new AnimalMenu(this, animalType, animalName);
                     while (animalMenu.isRunning()) {
+                        consoleReader.println("Вид:" + animalType + " Кличка:" + animalName);
                         consoleReader.println(animalMenu.printMenu());
                         String choice = consoleReader.input("Выберите пункт меню: ");
                         if (animalMenu.checkInputLineMenu(choice) == -1) {
@@ -143,7 +146,7 @@ public class ConsoleUI implements View {
         if (animalCommand.isEmpty()) {
             consoleReader.println(animalMenu.getNameAnimal() + " вам не подчиняется");
         } else {
-            System.out.println("Список команд:\n" + animalCommand+ "\n");
+            System.out.println("Список команд:\n" + animalCommand + "\n");
         }
     }
 
@@ -177,5 +180,11 @@ public class ConsoleUI implements View {
         return presenter.getNamesAnimalsByType(typeAnimal);
     }
 
+    private void showCountAnimals() {
+        Map<String, Integer> count = presenter.getNumberOfAnimals();
+        consoleReader.println("Всего животных в реестре:" + count.get("total") +
+                ((count.get("pets") == 0) ? "" : " Домашних:" + count.get("pets")) +
+                ((count.get("packAnimals") == 0) ? "" : " Вьючных:" + count.get("packAnimals")));
+    }
 
 }

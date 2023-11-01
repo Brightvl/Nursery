@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class Presenter {
 
@@ -57,5 +58,9 @@ public class Presenter {
 
     public boolean learnCommand(String typeAnimal, String nameAnimal, String command) {
         return serviceAnimalRegistry.learnCommand(typeAnimal, nameAnimal, command);
+    }
+
+    public Map<String, Integer> getNumberOfAnimals() {
+        return serviceAnimalRegistry.getNumberOfAnimals();
     }
 }

@@ -1,6 +1,9 @@
 package model.register;
 
 import model.register.animal.Animal;
+import model.register.packAnimal.PackAnimal;
+import model.register.pet.Cat;
+import model.register.pet.Pet;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +12,9 @@ import java.util.List;
 public class AnimalRegistry implements Iterable<Animal>{
 
     private List<Animal> animalList;
-
+    private int countPets = 0;
+    private int countPackAnimals = 0;
+    private int totalNumberOfAnimals = 0;
     private List<String> permissibleTypeOfAnimalsList = new ArrayList<>() {
         {
             {
@@ -29,6 +34,7 @@ public class AnimalRegistry implements Iterable<Animal>{
 
     public void addAnimal(Animal animal) {
         this.animalList.add(animal);
+        counterAnimal(animal);
     }
 
 
@@ -52,5 +58,25 @@ public class AnimalRegistry implements Iterable<Animal>{
         return animalList.iterator();
     }
 
+    private void counterAnimal(Animal animal) {
+        if (animal instanceof Pet) {
+            this.countPets++;
+        }
+        if (animal instanceof PackAnimal) {
+            this.countPackAnimals++;
+        }
+        this.totalNumberOfAnimals = this.countPackAnimals + this.countPets;
+    }
 
+    public int getCountPets() {
+        return countPets;
+    }
+
+    public int getCountPackAnimals() {
+        return countPackAnimals;
+    }
+
+    public int getTotalNumberOfAnimals() {
+        return totalNumberOfAnimals;
+    }
 }

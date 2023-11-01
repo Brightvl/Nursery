@@ -56,11 +56,7 @@ public class ConsoleReader  implements Output, Input{
         System.out.printf("%-3s %-14s %-2s %-8s%n", "№", "Название", "Количество", "Выиграно штук");
     }
 
-    public void printList(List<String> list) {
-
-        for (String string : list
-        ) {
-            System.out.println(string);
-        }
+    public void print(List<String> list) {
+        System.out.print(list);
     }
 }

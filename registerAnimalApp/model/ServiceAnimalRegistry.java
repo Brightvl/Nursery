@@ -110,7 +110,7 @@ public class ServiceAnimalRegistry {
         if (animal instanceof Educable trainer && !animal.getCommands().stream()
                 .anyMatch(s -> s.equalsIgnoreCase(command))) {
 
-            trainer.teachCommand(command);
+            trainer.teachCommand(command.substring(0, 1).toUpperCase() + command.substring(1));
             return true;
         }
         return false;
@@ -125,6 +125,15 @@ public class ServiceAnimalRegistry {
             }
         }
         return null;
+    }
+
+    public Map<String, Integer> getNumberOfAnimals() {
+        Map<String, Integer> count = new HashMap<>(){{
+            put("total", animalRegistry.getTotalNumberOfAnimals());
+            put("pets", animalRegistry.getCountPets());
+            put("packAnimals", animalRegistry.getCountPackAnimals());
+        }};
+        return count;
     }
 }
 

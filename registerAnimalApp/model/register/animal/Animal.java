@@ -40,4 +40,5 @@ public abstract class Animal {
     public Date getBirthDate() {
         return birthDate;
     }
+
 }
