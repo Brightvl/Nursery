@@ -1,11 +1,11 @@
 # 1 часть задания в ubuntu 
 1. Использование команды cat в Linux
 	```bash
-	cat > "Pet" 
+	cat > "model.register.pet.Pet" 
 		собаки кошки хомяки
 	cat > "Pack_animals" 
 		лошади верблюды ослы
-	cat Pet Pack_animals > "Human_Friends"
+	cat model.register.pet.Pet Pack_animals > "Human_Friends"
  
 	#ИТОГ:
 	root@UbuntuVM:/home/brightvl/Nursery/Human_Friends
