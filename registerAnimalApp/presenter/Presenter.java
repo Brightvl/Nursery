@@ -42,7 +42,7 @@ public class Presenter {
         try {
             date = dateFormat.parse(dateStr);
         } catch (ParseException e) {
-            System.err.println("Дата введена неверно");
+            System.err.println("Неправильный формат даты,");
 
         }
         return date;

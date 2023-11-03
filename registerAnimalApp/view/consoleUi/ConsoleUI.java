@@ -6,6 +6,7 @@ import view.consoleUi.interactionConsole.ConsoleReader;
 import view.consoleUi.menu.typesMenu.AnimalMenu;
 import view.consoleUi.menu.typesMenu.MainMenu;
 
+import java.io.Console;
 import java.util.List;
 import java.util.Map;
 
@@ -144,7 +145,7 @@ public class ConsoleUI implements View {
         List<String> animalCommand = presenter.getListAnimalCommand(animalMenu.getTypeAnimal(),
                 animalMenu.getNameAnimal());
         if (animalCommand.isEmpty()) {
-            consoleReader.println(animalMenu.getNameAnimal() + " вам не подчиняется");
+            consoleReader.println(animalMenu.getNameAnimal() + " пока вам не подчиняется");
         } else {
             System.out.println("Список команд:\n" + animalCommand + "\n");
         }
