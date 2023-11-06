@@ -151,10 +151,6 @@ public class ConsoleUI implements View {
         }
     }
 
-//    public void ShowAnimalCommand() {
-//
-//    }
-
 
     public void closeProgram() {
         mainMenu.setRunning(false);
