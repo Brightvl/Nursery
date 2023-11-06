@@ -60,4 +60,6 @@ public class AnimalMenu extends Menu implements MenuCloser {
     public String getNameAnimal() {
         return nameAnimal;
     }
+
+
 }
