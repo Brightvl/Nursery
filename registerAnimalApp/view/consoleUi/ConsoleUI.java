@@ -59,11 +59,11 @@ public class ConsoleUI implements View {
             consoleReader.println("В реестр еще не добавлены животные\n");
         } else {
             String animalType = consoleReader.input("Виды животных в реестре:\n" +
-                    animalTypes + "\n Введите нужный вид -> ");
+                    animalTypes + "\n Введите нужный вид -> ").trim();
             if (checkTypeAnimal(animalTypes, animalType)) {
                 List<String> animalsNames = getNamesAnimalsByType(animalType);
                 consoleReader.print(animalsNames);
-                String animalName = consoleReader.input("\nВведите имя животного -> ");
+                String animalName = consoleReader.input("\nВведите имя животного -> ").trim();
                 if (checkNameAnimal(animalsNames, animalName)) {
                     this.animalMenu = new AnimalMenu(this, animalType, animalName);
                     while (animalMenu.isRunning()) {
@@ -104,12 +104,12 @@ public class ConsoleUI implements View {
                         Домашние: Cat, Dog, Hamster
                         Вьючные: Horse, Donkey, Camel
                                         
-                        Введите вид животного ->""" + " ");
+                        Введите вид животного ->""" + " ").trim();
         ;
         if (checkTypeAnimal(presenter.getPermissibleTypeOfAnimalsList(), typeOfAnimal)) {
 
-            String name = consoleReader.input("Введите кличку -> ");
-            String dateOfBirth = consoleReader.input("Введите дату рождения вида дд.мм.гггг");
+            String name = consoleReader.input("Введите кличку -> ").trim();
+            String dateOfBirth = consoleReader.input("Введите дату рождения вида дд.мм.гггг").trim();
             boolean isTrue = presenter.addAnimal(typeOfAnimal, name, dateOfBirth);
             if (isTrue) {
                 consoleReader.println("Животное добавлено в реестр");
@@ -162,7 +162,7 @@ public class ConsoleUI implements View {
     }
 
     public void learnCommand() {
-        String command = consoleReader.input("Введите команду для изучения -> ");
+        String command = consoleReader.input("Введите команду для изучения -> ").trim();
 
         if (presenter.learnCommand(animalMenu.getTypeAnimal(), animalMenu.getNameAnimal(), command)) {
             consoleReader.println("Ура '" + animalMenu.getNameAnimal() + "' выучил команду '" + command + "'");
